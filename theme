@@ -1,0 +1,508 @@
+@CHARSET "UTF-8";
+
+#comic_image {
+	max-width: 1200px;
+	height: auto;
+}
+
+/* Global Site Stuff
+----------------------------------------------------- */
+html, body {
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 14px;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+body {
+	margin: 0;
+	background: background: #010b15 url('https://jcdr23trash.neocities.org/bg.PNG') no-repeat 50% 0;
+	color: #292e33;
+}
+
+.clear {
+	clear: both;
+}
+
+.noselect {
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
+}
+
+a {
+	text-decoration: none;
+	font-weight: 600;
+	outline: none;
+	color: #036;
+}
+
+a:hover {
+	color: #900;
+	text-decoration: underline;
+}
+
+h1, h2 {
+	font-size: 32px;
+	padding: 0 0 2px;
+	margin: 0;
+	font-weight: normal;
+	color: #363636;
+}
+
+h2 {
+	font-size: 23px;
+	font-weight: 600;
+}
+
+.subheader {
+	font-size: 14px;
+	font-style: italic;
+	color: #737373;
+}
+
+svg {
+	overflow: visible; /* firefox fix */
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+
+#overall-wrapper, #inner-wrapper {
+	min-width: 960px;
+}
+
+#overall-wrapper {
+	min-height: 100%;
+}
+
+#inner-wrapper {
+	min-height: 100%;
+	width: 100%;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+}
+
+#footer-placeholder {
+	height: 40px;
+}
+
+#overall-footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	font-size: 12px;
+	color: rgba(255,255,255,0.75);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.subtle {
+	display: none;
+}
+
+#page {
+	display: table;
+	border-spacing: 0;
+	width: 960px;
+	margin: 0 auto;
+}
+
+#main {
+	padding: 20px 40px 36px;
+	min-height: 280px;
+	background: #fff;
+	border-radius: 0 0 3px 3px;
+}
+
+/* Header & Menu
+----------------------------------------------------- */
+#header a {
+	text-decoration: none;
+}
+
+#logo {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+#banner {
+	flex-shrink: 0;
+	flex-grow: 0;
+	height: 136px;
+	line-height: 160px;
+	text-align: center;
+	font-size: 39px;
+	font-weight: 600;
+	color: #40566d;
+	display: flex;
+}
+
+#banner > * {
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+
+#banner span {
+	background: url(images/banner-bg.png);
+	min-width: 500px;
+	padding: 0 16px;
+}
+
+#banner:before, #banner:after {
+	content: "";
+	display: block;
+	width: 134px;
+	background: url(images/banner-side.png) no-repeat 0 0;
+}
+
+#banner:after {
+	transform: scaleX(-1);
+}
+
+#nav-bar {
+	display: flex;
+	background: #3c5b7c;
+	border-radius: 3px 3px 0 0;
+}
+
+#nav-bar > * {
+	flex-grow: 1;
+	flex-shrink: 0;
+}
+
+#social-links {
+	display: flex;
+	flex-grow: 0;
+}
+
+#nav-menu {
+	display: flex;
+	justify-content: space-around;
+}
+
+#nav-bar li {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+}
+
+#nav-bar .spacer {
+	width: 3%;
+	min-width: 24px;
+	flex-grow: 0;
+	flex-shrink: 1;
+}
+
+#nav-bar a {
+	display: block;
+	padding: 1px 12px 0;
+	min-width: 2.5em;
+	text-align: center;
+	white-space: nowrap;
+	color: #e4edf6;
+	font-size: 17px;
+	line-height: 43px;
+	font-weight: 600;
+	transition: all 60ms;
+	margin: 0 10px;
+}
+
+#nav-bar a:hover {
+	color: #fff;
+}
+
+#nav-bar #social-links a {
+    padding: 1px 6px 0;
+    margin: 0 2px;
+    min-width: auto;
+    display: inline-flex;
+    align-items: center;
+}
+
+#social-links svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+}
+
+/* Comic Page
+----------------------------------------------------- */
+#comic-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#comic-header {
+	padding: 32px 0;
+	text-align: center;
+}
+
+.comic-nav {
+	display: flex;
+	justify-content: center;
+	padding: 24px 0;
+	cursor: default;
+}
+
+.comic-nav a {
+	display: inline-block;
+	padding: 4px 6px;
+	margin: 0 18px;
+}
+
+.disabled.navlink {
+	visibility: hidden;
+}
+
+.comments {
+	margin: 20px auto;
+}
+
+.comments-wrapper {
+	padding: 8px 0;
+}
+
+.author .comments-wrapper {
+	background: #fafafa;
+}
+
+.comments .body iframe, .comments .body img {
+	max-width: 100%;
+}
+
+.comment-header {
+    height: 54px;
+    line-height: 54px;
+    padding: 0 16px;
+    position: relative;
+}
+
+#comic-page .comment-header {
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 2px solid #eee;
+}
+
+.comment-footer, .comic-comment-footer {
+	position: relative;
+	height: 32px;
+	line-height: 20px;
+}
+
+.comic-comment-footer.no-comments {
+	margin-top: 30px;
+}
+
+.comment-header .title {
+	font-size: 20px;
+	color: #363636;
+	font-weight: 600;
+}
+
+.comment-header .post-comment, .comment-footer .post-comment {
+	color: #364a7f;
+	font-size: 15px;
+	position: absolute;
+	right: 16px;
+	top: 0;
+}
+
+.comic-comment-footer {
+	text-align: center;
+}
+
+.comic-comment-footer .post-comment {
+	font-size: 17px;
+}
+
+.comments .comment {
+	padding: 24px 22px 20px;
+}
+
+.comments .comment:last-of-type {
+	padding-bottom: 18px;
+	border-bottom: none;
+	border-radius: 0 0 3px 3px;
+	margin-bottom: 0;
+}
+
+.comments .comment .header {
+	margin-top: -4px;
+}
+
+.comments .comment .header a {
+	color: #8f99a3;
+}
+
+.comments .comment .header a:hover {
+	text-decoration: underline;
+}
+
+.comments .comment .header .bullet {
+	padding: 0 4px;
+	color: #cdd1d6;
+	position: relative;
+	top: 1px;
+}
+
+.comments .username {
+	font-weight: 600;
+	font-size: 15px;
+	color: #394046;
+}
+
+.comments .date {
+	display: inline-block;
+	font-size: 13px;
+	color: #8f99a3;
+	font-style: italic;
+}
+
+.comments .comment .content:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.comments .message {
+	margin-top: 3px;
+	overflow-wrap: break-word;
+	line-height: 1.5em;
+	font-size: 14px;
+}
+
+.comments .title {
+	font-weight: 600;
+	margin-right: .25em;
+}
+
+.comments .title:empty {
+	display: none;
+}
+
+.comments .body {
+	display: inline;
+}
+
+a {
+	color: #160066;
+}
+
+a:hover {
+	color: #5c37dd;
+}
+
+#page {
+	width: 100%;
+	max-width: 1000px;
+}
+
+#logo {
+	display: block;
+	height: 230px;
+}
+
+#nav-bar {
+	background: rgba(0,0,0,0.85);
+	box-shadow: inset 1px 1px 2px rgba(255,255,255,0.15);
+	border-radius: 7px 7px 0 0;
+}
+
+#nav-bar a {
+	padding: 2px 20px 0;
+	line-height: 46px;
+	color: rgba(255,255,255,0.98);
+}
+
+#nav-bar a:not(.icon):hover {
+	background: rgba(255,255,255,0.05);
+}
+
+/* Archive styling */
+#archive {
+	text-align: center;
+}
+
+.archive-page {
+	width: 100%;
+	background-color: #dbdbdb;
+	padding: 4px 8px;
+	border: 1px solid white;
+	border-radius: 4px;
+}
+
+.archive-page a {
+	display: flex;
+}
+
+.archive-page a time {
+	text-align: right;
+	flex-grow: 1;
+	font-weight: 400;
+}
+
+.archive-layout--list, .archive-layout--inline {
+	padding: 0px;
+	margin: 0 auto;
+	width: 500px;
+}
+
+.archive-layout--list li, .archive-layout--inline li {
+	list-style-type: none;
+}
+
+.archive-layout--inline li {
+	display: inline;
+	margin: 0 2px;
+}
+
+#archive nav ul {
+	display: flex;
+	max-width: 500px;
+	margin: 10px auto 0;
+}
+#archive nav li {
+	flex: 1 1 0;
+}
+
+/* Admin bar styling */
+#special {
+	position: absolute;
+	right: 0;
+	max-width: 180px;
+	border-bottom: none;
+	border-radius: 0 0 0 10px;
+	text-align: right;
+	padding: 4px;
+}
+
+#special a {
+	display: block;
+	padding-right: 8px;
+}
+
+#special .login {
+	padding-right: 8px;
+}
+
+#special .logo {
+	display: none;
+}
